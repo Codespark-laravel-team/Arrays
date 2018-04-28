@@ -10,10 +10,7 @@
      
         <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
         <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.js"></script>
-
-
-        
+        <script src="assets/js/jquery.js"></script>        
     </head>
     <body>
  <!-- Opening the container div -->
@@ -26,8 +23,36 @@
 <div class="jumbotron">
     <h3>Vardump of Post data in array</h3>
 <?php 
+
+date_default_timezone_set("GMT");
 //dumping the post data we got from the register page
-var_dump($_POST);
+
+if(isset($_POST)){
+    $mysql = mysqli_connect("localhost","root","","codesparks") or die("Error Connecting to Database");
+
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+
+    $sql = "INSERT INTO profile VALUE('".$firstname."',"."'".$lastname."',"."'".$email."','".$phone."' )";
+
+    mysqli_query($mysql,$sql) or die("Error Inserting data into database");
+
+    mysqli_close($mysql);
+
+    echo "Your profile has been saved successfully";
+}else{
+
+    echo "Please use the right route!";
+}
+
+//connection to mysql
+
+
+
+
+
 
 //saving it in a variable for easy read
 $user=$_POST;
