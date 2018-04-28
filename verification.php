@@ -28,7 +28,7 @@ date_default_timezone_set("GMT");
 //dumping the post data we got from the register page
 
 if(isset($_POST)){
-    $mysql = mysqli_connect("localhost","root","","codesparks") or die("Error Connecting to Database");
+    $mysql = mysqli_connect("localhost","root","","codespark") or die("Error Connecting to Database");
 
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
